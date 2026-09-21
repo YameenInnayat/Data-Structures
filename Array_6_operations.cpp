@@ -1,97 +1,102 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 void traversal(int a[], int n)
 {
-    cout<<"{";
+    printf("{");
     for (int i=0; i<n; i++)
-    { 
-      cout<<a[i];
-      
-      if (i==(n-1))
-      break;  
+    {
+        printf("%d", a[i]);
 
-      cout<<",";
+        if (i==(n-1))
+        break;
+
+        printf(",");
     }
-    cout<<"}"<<endl;
+    printf("}\n");
 }
 
 void linearsearch(int a[], int n)
 {
-int key,count=0;
-cout<<"Enter Element To Find In Array: ";
-cin>>key;
+    int key,count=0;
+    printf("Enter Element To Find In Array: ");
+    scanf("%d",&key);
 
-for (int i=0; i<n; i++){
-    
-    if(a[i]==key){
-    cout<<"Element Found At Position "<<i+1<<" "<<endl;
-    count=1;
+    for (int i=0; i<n; i++){
+
+        if(a[i]==key){
+        printf("Element Found At Position %d \n",i+1);
+        count=1;
+        }
+
     }
-    
-}
 
-if(count==0)
-{
-cout<<"Element Not Found";
-}
+    if(count==0)
+    {
+    printf("Element Not Found");
+    }
 
 }
 
 void bubblesort(int a[], int n)
-{ int temp;
-   for(int i=1; i<n; i++)
-   {
-    for(int j=0; j<n-i; j++){
-        if(a[j]>a[j+1]){
-         temp = a[j];
-         a[j]=a[j+1];
-         a[j+1]=temp;
+{
+    int temp;
+    for(int i=1; i<n; i++)
+    {
+        for(int j=0; j<n-i; j++){
+            if(a[j]>a[j+1]){
+                temp = a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+            }
         }
     }
-   }
-   traversal(a,n); 
+    traversal(a,n);
 }
 
 void ins_del(int a[], int n)
-{ int b,pos,ins;
-   cout<<"Press 1 for Insertion / Press 2 for Deletion : ";
-   cin>>b;
-   
-   if(b==1){
-    cout<<"Enter the Element Position for Insertion: ";
-   cin>>pos;
-   --pos;
-    cout<<"Enter the Insertion Value: ";
-    cin>>ins;
-   for(int i=n-1; i>=pos; i--) {
-     a[i+1]=a[i];
-   }
-   a[pos]=ins;
-   n++;
-   
-   }
+{
+    int b,pos,ins;
+    printf("Press 1 for Insertion / Press 2 for Deletion : ");
+    scanf("%d",&b);
+
+    if(b==1){
+        printf("Enter the Element Position for Insertion: ");
+        scanf("%d",&pos);
+        --pos;
+
+        printf("Enter the Insertion Value: ");
+        scanf("%d",&ins);
+
+        for(int i=n-1; i>=pos; i--) {
+            a[i+1]=a[i];
+        }
+
+        a[pos]=ins;
+        n++;
+    }
 
     if(b==2){
-    cout<<"Enter the Element Position for Deletion: ";
-   cin>>pos;
-   --pos;
-   for(int i=pos; i<n-1; i++) {
-     a[i]=a[i+1];
-     
-   } 
-   n--;
-   }
+        printf("Enter the Element Position for Deletion: ");
+        scanf("%d",&pos);
+        --pos;
 
-   traversal(a,n);
+        for(int i=pos; i<n-1; i++) {
+            a[i]=a[i+1];
+        }
+
+        n--;
+    }
+
+    traversal(a,n);
 }
 
-
 void binarysearch(int a[], int n)
-{ bubblesort(a,n);
+{
+    bubblesort(a,n);
+
     int key,low=0,high=n-1;
-    cout << "Enter Element to Find: ";
-    cin >> key;
+    printf("Enter Element to Find: ");
+    scanf("%d",&key);
 
     while (low <= high)
     {
@@ -99,7 +104,7 @@ void binarysearch(int a[], int n)
 
         if (a[mid] == key)
         {
-            cout << "Element found at Position " << mid+1 << endl;
+            printf("Element found at Position %d\n",mid+1);
             return;
         }
         else if (a[mid] < key)
@@ -112,32 +117,24 @@ void binarysearch(int a[], int n)
         }
     }
 
-    cout << "Element not found" << endl;
+    printf("Element not found\n");
 }
-
 
 int main(){
 
-int n,a[100];
-cout<<"Enter array size: ";
-cin>>n;
+    int n,a[100];
+    printf("Enter array size: ");
+    scanf("%d",&n);
 
-for (int i=0; i<n; i++){
-cout<<"Enter element "<<i+1<<" : ";
-cin>>a[i];
-}
+    for (int i=0; i<n; i++){
+        printf("Enter element %d : ",i+1);
+        scanf("%d",&a[i]);
+    }
 
-linearsearch(a,n);
-bubblesort(a,n);
-ins_del(a,n);
-binarysearch(a,n);
-
+    linearsearch(a,n);
+    bubblesort(a,n);
+    ins_del(a,n);
+    binarysearch(a,n);
 
     return 0;
 }
-
-
-    
-
-    
-  
