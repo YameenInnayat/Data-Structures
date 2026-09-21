@@ -122,7 +122,7 @@ void binarysearch(int a[], int n)
 
 int main(){
 
-    int n,a[100];
+    int n,a[100],ans;
     printf("Enter array size: ");
     scanf("%d",&n);
 
@@ -130,11 +130,13 @@ int main(){
         printf("Enter element %d : ",i+1);
         scanf("%d",&a[i]);
     }
-
-    linearsearch(a,n);
-    bubblesort(a,n);
-    ins_del(a,n);
-    binarysearch(a,n);
+ printf("Traversal(print)(1)\nLinearsearch(2)\nBubblesort(3)\nInsert-del(4)\nBinarySearch(5)\nSelect One from Above: ");
+ scanf("%d",&ans);
+    if (ans==2){linearsearch(a,n);}
+    if (ans==3){bubblesort(a,n);}
+    if (ans==4){ins_del(a,n);}
+    if (ans==5){binarysearch(a,n);}
+    if (ans==1){traversal(a,n);}
 
     return 0;
 }
